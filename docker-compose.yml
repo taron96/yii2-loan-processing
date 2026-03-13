@@ -10,6 +10,11 @@ services:
       - db
     networks:
       - loan_network
+    command: >
+      sh -c "mkdir -p runtime/logs && 
+             touch runtime/logs/app.log && 
+             chmod -R 777 runtime/logs && 
+             php-fpm"
 
   db:
     image: postgres:15

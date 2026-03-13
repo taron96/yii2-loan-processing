@@ -41,6 +41,12 @@ $config = [
                 [
                     'class'  => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logFile' => '@runtime/logs/app.log',
+                ],
+                [
+                    'class' => 'yii\log\SyslogTarget',
+                    'levels' => ['error', 'warning'],
+                    'identity' => 'loan-api',
                 ],
             ],
         ],
@@ -50,7 +56,7 @@ $config = [
             'showScriptName'  => false,
             'rules'           => [
                 'POST requests' => 'request/create',
-                'GET processor' => 'request/processor',
+//                'GET processor' => 'request/processor',
             ],
         ],
     ],
