@@ -53,4 +53,22 @@ class RequestController extends Controller
 
         return ['result' => false];
     }
+
+    /**
+     * Endpoint: GET /processor
+     * Validates loan requests and approves or rejects them
+     *
+     * @return array
+     */
+    public function actionProcessor(): array
+    {
+        $delay = (int)Yii::$app->request->get('delay', 1);
+
+        $this->loanService->processLoans($delay);
+
+        Yii::$app->response->statusCode = 200;
+        return [
+            'result' => true,
+        ];
+    }
 }

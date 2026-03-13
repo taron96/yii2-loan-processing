@@ -6,6 +6,7 @@ namespace app\repositories;
 
 use app\models\LoanRequest;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\Connection;
 
 class LoanRequestRepository
@@ -33,5 +34,15 @@ class LoanRequestRepository
                 ':status' => LoanRequest::STATUS_APPROVED,
             ])
             ->queryScalar();
+    }
+
+    /**
+     * Returns query for pending loans to use it for batching later.
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPendingLoansQuery(): ActiveQuery
+    {
+        return LoanRequest::find()->where(['status' => LoanRequest::STATUS_PENDING]);
     }
 }

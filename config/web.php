@@ -39,13 +39,13 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets'    => [
                 [
-                    'class'  => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'class'   => 'yii\log\FileTarget',
+                    'levels'  => ['error', 'warning'],
                     'logFile' => '@runtime/logs/app.log',
                 ],
                 [
-                    'class' => 'yii\log\SyslogTarget',
-                    'levels' => ['error', 'warning'],
+                    'class'    => 'yii\log\SyslogTarget',
+                    'levels'   => ['error', 'warning'],
                     'identity' => 'loan-api',
                 ],
             ],
@@ -56,7 +56,7 @@ $config = [
             'showScriptName'  => false,
             'rules'           => [
                 'POST requests' => 'request/create',
-//                'GET processor' => 'request/processor',
+                'GET processor' => 'request/processor',
             ],
         ],
     ],
