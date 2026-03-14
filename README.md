@@ -23,8 +23,8 @@ A high-performance REST API for submitting and processing loan applications, bui
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/loan-api-task.git](https://github.com/your-username/loan-api-task.git)
-    cd loan-api-task
+    git clone [https://github.com/taron96/yii2-loan-processing.git](https://github.com/taron96/yii2-loan-processing.git)
+    cd yii2-loan-processing
     ```
 
 2.  **Start the containers:**
