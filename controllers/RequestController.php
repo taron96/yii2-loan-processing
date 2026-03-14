@@ -13,19 +13,19 @@ use yii\rest\Controller;
  */
 class RequestController extends Controller
 {
-    private LoanService $loanService;
+    private LoanService $service;
 
     /**
      * Dependency Injection via constructor
      *
      * @param                           $id
      * @param                           $module
-     * @param \app\services\LoanService $loanService
+     * @param \app\services\LoanService $service
      * @param array                     $config
      */
-    public function __construct($id, $module, LoanService $loanService, $config = [])
+    public function __construct($id, $module, LoanService $service, $config = [])
     {
-        $this->loanService = $loanService;
+        $this->service = $service;
         parent::__construct($id, $module, $config);
     }
 
@@ -39,7 +39,7 @@ class RequestController extends Controller
     {
         $data = Yii::$app->request->post();
 
-        $model = $this->loanService->createRequest($data);
+        $model = $this->service->createRequest($data);
 
         if ($model) {
             Yii::$app->response->statusCode = 201;
@@ -52,23 +52,5 @@ class RequestController extends Controller
         Yii::$app->response->statusCode = 400;
 
         return ['result' => false];
-    }
-
-    /**
-     * Endpoint: GET /processor
-     * Validates loan requests and approves or rejects them
-     *
-     * @return array
-     */
-    public function actionProcessor(): array
-    {
-        $delay = (int)Yii::$app->request->get('delay', 1);
-
-        $this->loanService->processLoans($delay);
-
-        Yii::$app->response->statusCode = 200;
-        return [
-            'result' => true,
-        ];
     }
 }

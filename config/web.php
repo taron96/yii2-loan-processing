@@ -56,7 +56,7 @@ $config = [
             'showScriptName'  => false,
             'rules'           => [
                 'POST requests' => 'request/create',
-                'GET processor' => 'request/processor',
+                'GET processor' => 'processor/index',
             ],
         ],
     ],
